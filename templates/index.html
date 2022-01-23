@@ -1,0 +1,179 @@
+
+<!DOCTYPE html> 
+<html lang="vi">
+    <title> HiMap </title>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&family=PT+Serif&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
+        
+        <style>
+            body {
+              background-image: url("{% static 'images/bus2.jpg' %}");
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="banner">
+                <img src="{% static 'images/Banner (1080 x 590).png' %}">
+            </div>
+            <div class="menu_top"> 
+                <div class="tabs">
+                        <div class="tab-item active">
+                            <ul><li><a href="#" title="Home"> Trang chủ </a></li></ul>
+                        </div>
+                        <div class="tab-item">       
+                            <ul><li><a href="#" title="About us"> Giới thiệu </a></li></ul>
+                        </div>
+                        <div class="line"></div>
+                </div>
+            </div>
+            <div class="tab-content" >
+                <div class="tab-pane active">
+                    <div class="trangchu">
+                        <form action="/post_way/way/" method="POST">
+                            {% csrf_token %}
+                            <div class="nhap">
+                            <div class="start">
+                                <div class="tram1"> 
+                                    <p>Trạm bắt đầu:</p>
+                                </div>
+                                <select name="start" id="start">
+                                    {% for i in bus %}
+                                    <option>{{i}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="end">
+                                <div class="tram2">
+                                    <p>Trạm kết thúc:</p>
+                                </div>
+                                <select name="end" id="start" value = {{ end }}>
+                                    {% for i in bus %}
+                                    <option>{{i}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            </div>
+                            <input 
+                                type="submit"
+                                value="Tìm" 
+                                name="search" 
+                                class="input-search" 
+                            >
+                        </form>
+                    </div>
+                    <div class="way">
+                        <div>
+                            <div class="title">Gợi ý tuyến xe bus:</div>
+                            <div class="box"> {% for i in bus_number %} {{i}} {%endfor%} </div>
+                        </div>
+                        <div>
+                            <div class="titlepath"> Hướng dẫn tuyến đường đi: </div>
+                            <div class="path">{{ data }} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane">
+                    <div class="canle3">
+                        <h3 class="content"><strong> <i> Giới Thiệu </i></strong></h3> 
+                        <p class="noidung1">         HiMAP là một dự án trẻ do nhóm bạn sinh viên trường Đại học Kinh tế - Luật thực hiện. <br> 
+                                        Mục tiêu của HiMAP là gợi ý tuyến đường đi ngắn nhất giữa các trạm xe ở quận Thủ Đức, giúp các bạn học sinh, sinh viên, 
+                                        người sử dụng xe buýt tối ưu thời gian trong việc lựa chọn tuyến xe phù hợp.
+                        </p> <br>
+                        <h3 class="content"><strong> <i> Cơ sở thực hiện </i></strong></h3> 
+                        <p class="noidung1">
+                                        HiMAP được xây dựng bằng thuật toán <a href="https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/">
+
+                                        Dijkstra</a>, 
+                                        viết bằng ngôn ngữ lập trình Python và sử dụng nguồn dữ liệu uy tín từ 
+                                        <a href="https://map.busmap.vn/hcm">Busmap</a>
+                                        và
+                                        <a href="https://www.google.com/maps">Google Maps</a>.
+                        </p><br>
+                        <h3 class="content"><strong> <i> Thành viên </i></strong></h3>
+                        <div class="members">
+                            <div class="thanhvien_1"> 
+                                <img src="{% static 'Ava/pi.png' %}">
+                                <p> Vũ Lưu Hoàng Lan </p> 
+                                <p> Nhóm trưởng </p>
+                            </div>
+                            <div class="thanhvien_2"> 
+                                <img src="{% static 'Ava/pt.png' %}">
+                                <p> Trần Văn Phát </p> 
+                                <p> Thành viên </p>
+                            </div>
+                            <div class="thanhvien_3"> 
+                                <img src="{% static 'Ava/lu.png' %}">
+                                <p> Giả Ngọc Thảo Ly </p>
+                                <p> Thành viên </p>
+                            </div>
+                            <div class="thanhvien_4"> 
+                                <img src="{% static 'Ava/bt.png' %}">
+                                <p> Phan Ngọc Bảo Tâm </p> 
+                                <p> Thành viên </p>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact">
+                <div class="contact_1">
+                    <h1 class="logo_bottom"> HiMap <i class="fas fa-bus-alt"></i> </h1> 
+                    <div class="icon">
+                        <i class="fas fa-envelope-square"></i>
+                        <i class="fas fa-phone-square"></i> <br></div>
+                    <p class="ct1"> © 2021 Bản quyền được đăng ký bởi HiMap </p>
+                </div>
+                <div class="contact_2">
+                    <h3 class="contact_us"> Liên hệ </h3>
+                    <p class="contact_us_social"> 
+                        Email:      lanvlh21406c@st.uel.edu.vn <br>  
+                        Phone:      +84 944 772 586 
+                    </p>
+                </div>
+                <div class="contact_3">
+                    <h3 class="account"> Tài khoản </h3>
+                    <div class="account_1">
+                        <a href="signup.html"> Đăng ký </a> <br>
+                        <a href="login.html">  Đăng Nhập  </a>
+                    </div>
+                    
+                </div>    
+                <div class="contact_4">
+                    <h3> Tài nguyên </h3>
+                    <div class="resources">
+                        <a href="#"> Trợ giúp </a> <br>
+                        <a href="#"> Quyền riêng tư & Điều khoản </a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <!-- 
+        <script>
+			hoTen=prompt("Nhập họ tên của bạn:");
+            alert("Chào mừng " + hoTen + " đã đến với HiMap. Chúng tôi rất hân hạnh được phục vụ và hỗ trợ bạn:" );
+		</script>
+        -->
+        <script defer src="{% static 'js/index.js' %}"></script>
+    </body>
+</html>

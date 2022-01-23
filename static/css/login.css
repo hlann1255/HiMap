@@ -1,0 +1,66 @@
+body{
+    font-family: Times New Roman;
+    margin: 0px auto;
+}
+.container{
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+.login{
+    width: 300px;
+    height: 350px;
+    background-color: #FFFF;
+    border: 1px solid rgb(138, 219, 252);
+    border-radius: 10px;
+    border-width: 5px;
+    text-align: center;
+    margin: 0px auto;
+}
+.login h1{
+    display: inline-block;
+    color: black;
+}
+.font1{
+    font-family: 'Lobster Two', cursive;
+}
+.login input{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid rgb(138, 219, 252);
+    margin-bottom: 15px;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+.check input{
+    width: 10px;
+    height: 10px;
+}
+.login a button{
+    width: 220px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(70, 119, 253);
+    color: white;
+    cursor: pointer;
+    font-weight: 10px;
+}
+p{
+    float: left;
+    display: inline-block;
+    padding-left: 40px;
+    margin: 0px;
+}
+.check{
+    float: left;
+    padding-left: 40px;
+
+}
+.login a{
+    float: right;
+    padding-right: 40px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 14px;
+}
